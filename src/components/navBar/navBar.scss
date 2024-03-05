@@ -1,0 +1,21 @@
+@import "../../styles/colorTheme.scss";
+
+.navbar {
+  background-color: $primary;
+  color: white;
+  margin-bottom: 1rem;
+
+  .navbar-brand {
+    color: white;
+  }
+
+  .nav-link {
+    color: white;
+    font-size: 1.2rem;
+  }
+
+}
+
+.navbarContainer {
+  width: 100%;
+}
