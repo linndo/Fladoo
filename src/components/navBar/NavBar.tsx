@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react"
 
 import "./navBar.scss"
 
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import Container from "react-bootstrap/Container"
 
 const NavBar: React.FC = () => {
     return (
@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    );
-};
+    )
+}
 
-export default NavBar;
+export default NavBar
