@@ -7,8 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import NavBar from "../navBar/NavBar.tsx"
 
-import Home from "../../pages/home/Home.tsx"
+import Home from "../../pages/Home/Home.tsx"
 import Gallery from "../../pages/Gallery/Gallery.tsx"
+import ManageHousehold from "../../pages/ManageHousehold/ManageHousehold.tsx"
 
 import Container from "react-bootstrap/Container"
 
@@ -19,7 +20,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/manage" element={<ManageHousehold />} />
                 </Routes>
             </Router>
         </Container>

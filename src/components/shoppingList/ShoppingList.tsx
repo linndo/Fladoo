@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react"
-import { Card, Form, ListGroup } from "react-bootstrap"
+import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap"
 import "./shoppingList.scss"
 import { AiFillPlusCircle } from "react-icons/ai"
 import { fetchShopping } from "../../firebase/getShoppingList.tsx"
+import { addShoppingItem } from "../../firebase/addShoppingListItem.tsx"
+import { ShoppingListItem } from "../../interfaces/ShoppingListItem.tsx"
 
-interface ShoppingElement {
-    id: string
-    name: string
-    amount: number
-    dateAdded: Date
-}
 const ShoppingList: React.FC = () => {
-    const [shoppingElements, setShoppingElements] = useState<ShoppingElement[]>([])
+    const [shoppingElements, setShoppingElements] = useState<ShoppingListItem[]>([])
+    const [newItemName, setNewItemName] = useState("")
 
     useEffect(() => {
-        const fetchData = async () => {
+        fetchShoppingListItems()
+    }, [])
+
+    const fetchShoppingListItems = async () => {
+        try {
             const data = await fetchShopping()
             setShoppingElements(data)
+        } catch (error) {
+            console.error("Error fetching shopping list items: ", error)
         }
-
-        fetchData()
-    }, [])
+    }
+    function addNewShoppingItem() {
+        addShoppingItem(newItemName, 5)
+        fetchShoppingListItems()
+        setNewItemName("")
+    }
 
     return (
         <Card>
@@ -40,8 +46,21 @@ const ShoppingList: React.FC = () => {
                     ))}
                 </ListGroup>
                 <Card.Text>
-                    <Form.Control placeholder={"Neues Element hinzufügen"} className={"inputField"} />
-                    <AiFillPlusCircle />
+                    <Row>
+                        <Col xs={9}>
+                            <Form.Control
+                                onChange={(e) => setNewItemName(e.target.value)}
+                                value={newItemName}
+                                placeholder={"Neues Element hinzufügen"}
+                                className={"inputField"}
+                            />
+                        </Col>
+                        <Col xs={3}>
+                            <Button onClick={addNewShoppingItem}>
+                                <AiFillPlusCircle />
+                            </Button>
+                        </Col>
+                    </Row>
                 </Card.Text>
             </Card.Body>
         </Card>

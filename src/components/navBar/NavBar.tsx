@@ -10,15 +10,17 @@ const NavBar: React.FC = () => {
     return (
         <Navbar expand="lg" sticky="top" className="navbar">
             <Container>
-                <Navbar.Brand href="#home">Fladoo</Navbar.Brand>
+                <Navbar.Brand href="/home">Fladoo</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#calendar">Calendar</Nav.Link>
+                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/calendar">Calendar</Nav.Link>
+                        <Nav.Link href="/gallery">Gallery</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#home">Profile</Nav.Link>
+                        <Nav.Link href="/manage">Manage Household</Nav.Link>
+                        <Nav.Link href="/home">Profile</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
