@@ -10,6 +10,7 @@ import NavBar from "../navBar/NavBar.tsx"
 import Home from "../../pages/Home/Home.tsx"
 import Gallery from "../../pages/Gallery/Gallery.tsx"
 import ManageHousehold from "../../pages/ManageHousehold/ManageHousehold.tsx"
+import Profile from "../../pages/Profile/Profile.tsx";
 
 import Container from "react-bootstrap/Container"
 
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                     <Route path="/home" element={<Home />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/manage" element={<ManageHousehold />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
             </Router>
         </Container>

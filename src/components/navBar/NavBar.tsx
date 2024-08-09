@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link href="/manage">Manage Household</Nav.Link>
-                        <Nav.Link href="/home">Profile</Nav.Link>
+                        <Nav.Link href="/profile">Profile</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
