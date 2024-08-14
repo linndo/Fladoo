@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap"
 import "./shoppingList.scss"
+
 import { AiFillPlusCircle } from "react-icons/ai"
 import { fetchShopping } from "../../firebase/getShoppingList.tsx"
 import { addShoppingItem } from "../../firebase/addShoppingListItem.tsx"
 import { ShoppingListItem } from "../../interfaces/ShoppingListItem.tsx"
+import { deleteShoppingItem } from "../../firebase/deleteShoppingListItem.tsx"
+import { BiTrash } from "react-icons/bi"
 
 const ShoppingList: React.FC = () => {
     const [shoppingElements, setShoppingElements] = useState<ShoppingListItem[]>([])
@@ -28,6 +31,11 @@ const ShoppingList: React.FC = () => {
         setNewItemName("")
     }
 
+    function removeShoppingItem(name: string) {
+        deleteShoppingItem(name)
+        fetchShoppingListItems()
+    }
+
     return (
         <Card>
             <Card.Body>
@@ -41,7 +49,7 @@ const ShoppingList: React.FC = () => {
                             key={element.id}
                         >
                             {element.name}
-                            <Form.Check className={"checkbox"} />
+                            <BiTrash className={"trashIcon"} onClick={() => removeShoppingItem(element.name)} />
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
