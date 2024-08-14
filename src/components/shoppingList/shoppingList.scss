@@ -1,13 +1,26 @@
 @import "../../styles/colorTheme.scss";
 
-.inputField{
+.shoppingList {
+  text-align: center;
+}
+
+.shoppingHeader {
+  color: $primary;
+}
+
+.shoppingCol {
+  padding: 0;
+  text-align: left;
+}
+
+.inputField {
   border: none;
   border-bottom: 2px solid $primary;
   border-radius: 0;
   box-shadow: none !important;
 }
 
-.input:focus{
+.input:focus {
   outline: none;
 }
 
@@ -17,4 +30,14 @@
     box-shadow: none !important;
 
   }
+}
+
+.inputRow {
+  align-items: center;
+}
+
+.numberInput {
+  width: 3rem;
+  padding: 0;
+  margin: 0;
 }
