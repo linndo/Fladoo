@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Form, Row } from "react-bootstrap"
+import { Card, Col, Dropdown, Form, Row } from "react-bootstrap"
 
 import "./messages.scss"
 
-import { BiPencil } from "react-icons/bi"
+import { BiDotsVertical, BiPencil } from "react-icons/bi"
 import { addMessage } from "../../firebase/addNewMessage.tsx"
 import { fetchAllMessages } from "../../firebase/getMessages.tsx"
 import { Message } from "../../interfaces/Message.tsx"
+import { deleteMessage } from "../../firebase/deleteMessage.tsx"
 
 const Messages: React.FC = () => {
     const [newMessage, setNewMessage] = useState("")
@@ -35,6 +36,12 @@ const Messages: React.FC = () => {
         fetchMessages()
     }
 
+    function deleteCurrentMessage(message: string) {
+        console.log("lösche diese message: ", message)
+        deleteMessage(message)
+        fetchMessages()
+    }
+
     return (
         <div>
             <div>
@@ -46,7 +53,7 @@ const Messages: React.FC = () => {
                                 <Form.Control
                                     className={"newMessageInput"}
                                     type={"text"}
-                                    placeholder={"Neue Nachricht verfassen"}
+                                    placeholder={"Neue Nachricht verfassen..."}
                                     value={newMessage}
                                     onChange={(e) => handleNewMessageInput(e.target.value)}
                                     required
@@ -61,7 +68,24 @@ const Messages: React.FC = () => {
             </div>
             {messages.map((message) => (
                 <Card className={"message"} key={message.dateAdded.toString()}>
-                    <Card.Body>{message.messageText}</Card.Body>
+                    <Card.Body>
+                        <Row>
+                            <Col xs={10}>{message.messageText}</Col>
+                            <Col xs={2}>
+                                <Dropdown>
+                                    <Dropdown.Toggle className={"editMessageButton"}>
+                                        <BiDotsVertical className={"editMessageDots"} />
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item onClick={() => deleteCurrentMessage(message.messageText)}>
+                                            Nachricht löschen
+                                        </Dropdown.Item>
+                                        <Dropdown.Item href={"#action"}>Details anzeigen</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                        </Row>
+                    </Card.Body>
                 </Card>
             ))}
         </div>

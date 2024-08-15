@@ -1,3 +1,5 @@
+@import "../../styles/colorTheme.scss";
+
 .newMessageInput {
   border: none;
 }
@@ -5,3 +7,24 @@
 .message {
   margin: 1rem 0 1rem 0;
 }
+
+.dropdown-toggle::after {
+  display: none !important
+}
+
+.editMessageButton {
+  background: transparent !important;
+  border: none;
+  &:hover {
+    background: $primary !important;
+  }
+}
+
+.editMessageDots {
+  color: $primary;
+}
+
+.editMessageButton:hover .editMessageDots {
+  color: white;
+}
+
