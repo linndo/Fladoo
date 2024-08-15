@@ -3,6 +3,7 @@ import React from "react"
 import "./home.scss"
 import ShoppingList from "../../components/shoppingList/ShoppingList.tsx"
 import { Col, Row } from "react-bootstrap"
+import Messages from "../../components/Messages/Messages.tsx"
 
 const Home: React.FC = () => {
     return (
@@ -12,7 +13,9 @@ const Home: React.FC = () => {
                     <Col>
                         <ShoppingList />
                     </Col>
-                    <Col>placeholder</Col>
+                    <Col>
+                        <Messages />
+                    </Col>
                     <Col>placeholder 2</Col>
                 </Row>
             </div>

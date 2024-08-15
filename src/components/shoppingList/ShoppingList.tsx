@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Card, Col, Form, ListGroup, Row } from "react-bootstrap"
+
 import "./shoppingList.scss"
 
 import { AiFillPlusCircle } from "react-icons/ai"
@@ -44,7 +45,7 @@ const ShoppingList: React.FC = () => {
 
     return (
         <div className={"shoppingList"}>
-            <h1 className={"shoppingHeader"}>Shopping List</h1>
+            <h1 className={"text-center"}>Shopping List</h1>
             <Card>
                 <Card.Body>
                     <ListGroup>
