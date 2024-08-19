@@ -64,6 +64,11 @@ const Messages: React.FC = () => {
                                     placeholder={"Neue Nachricht verfassen..."}
                                     value={newMessage}
                                     onChange={(e) => handleNewMessageInput(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter") {
+                                            addNewMessage()
+                                        }
+                                    }}
                                     required
                                 />
                             </Col>
@@ -102,6 +107,12 @@ const Messages: React.FC = () => {
                                         </Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={6}></Col>
+                            <Col xs={6} className={"messageAuthor"}>
+                                ~ {message.author}
                             </Col>
                         </Row>
                     </Card.Body>

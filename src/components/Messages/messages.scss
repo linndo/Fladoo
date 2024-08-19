@@ -25,7 +25,7 @@
 
 .writeMessageButton {
   background: $primary !important;
-  border: none;
+  border: 1px solid $primary !important;
   &:hover {
     background: transparent !important;
   }
@@ -53,5 +53,10 @@
 
 .editMessageButton:hover .editMessageDots {
   color: white;
+}
+
+.messageAuthor {
+  font-size: small;
+  color: $primary-soft;
 }
 

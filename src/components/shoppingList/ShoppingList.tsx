@@ -82,10 +82,15 @@ const ShoppingList: React.FC = () => {
                         <Row className={"inputRow"}>
                             <Col xs={8} className={"inputCol"}>
                                 <Form.Control
-                                    onChange={(e) => handleItemInputChange(e.target.value)}
+                                    className={"inputField"}
                                     value={newItemName}
                                     placeholder={"Neues Element hinzufügen"}
-                                    className={"inputField"}
+                                    onChange={(e) => handleItemInputChange(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter") {
+                                            addNewShoppingItem()
+                                        }
+                                    }}
                                 />
                             </Col>
                             <Col xs={2} className={"inputCol"}>
