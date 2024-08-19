@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore"
-import { database } from "./firebase.ts"
-import { Message } from "../interfaces/Message.tsx"
+import { database } from "../firebase.ts"
+import { Message } from "../../interfaces/Message.tsx"
 
 const fetchAllMessages = async (): Promise<Message[]> => {
     const docRef = collection(database, "messages")

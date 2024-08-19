@@ -1,5 +1,5 @@
 import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"
-import { database } from "./firebase"
+import { database } from "../firebase.ts"
 
 const deleteMessage = async (message: string): Promise<void> => {
     const collectionRef = collection(database, "messages")

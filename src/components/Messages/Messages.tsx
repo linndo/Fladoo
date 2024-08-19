@@ -4,10 +4,10 @@ import { Card, Col, Dropdown, Form, Modal, Row, Table } from "react-bootstrap"
 import "./messages.scss"
 
 import { BiDotsVertical, BiPencil } from "react-icons/bi"
-import { addMessage } from "../../firebase/addNewMessage.tsx"
-import { fetchAllMessages } from "../../firebase/getMessages.tsx"
+import { addMessage } from "../../firebase/messageBoard/addNewMessage.tsx"
+import { fetchAllMessages } from "../../firebase/messageBoard/getMessages.tsx"
 import { Message } from "../../interfaces/Message.tsx"
-import { deleteMessage } from "../../firebase/deleteMessage.tsx"
+import { deleteMessage } from "../../firebase/messageBoard/deleteMessage.tsx"
 
 const Messages: React.FC = () => {
     const [newMessage, setNewMessage] = useState("")

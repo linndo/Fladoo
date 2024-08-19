@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore"
-import { database } from "./firebase.ts"
-import { ShoppingListItem } from "../interfaces/ShoppingListItem.tsx"
+import { database } from "../firebase.ts"
+import { ShoppingListItem } from "../../interfaces/ShoppingListItem.tsx"
 
 const fetchShopping = async (): Promise<ShoppingListItem[]> => {
     const docRef = collection(database, "shopping-list")

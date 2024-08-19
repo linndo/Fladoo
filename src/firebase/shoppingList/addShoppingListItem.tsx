@@ -1,5 +1,5 @@
 import { collection, addDoc } from "firebase/firestore"
-import { database } from "./firebase"
+import { database } from "../firebase.ts"
 
 const addShoppingItem = async (name: string, amount?: number): Promise<void> => {
     const docRef = collection(database, "shopping-list")

@@ -4,10 +4,10 @@ import { Card, Col, Form, ListGroup, Row } from "react-bootstrap"
 import "./shoppingList.scss"
 
 import { AiFillPlusCircle } from "react-icons/ai"
-import { fetchShopping } from "../../firebase/getShoppingList.tsx"
-import { addShoppingItem } from "../../firebase/addShoppingListItem.tsx"
+import { fetchShopping } from "../../firebase/shoppingList/getShoppingList.tsx"
+import { addShoppingItem } from "../../firebase/shoppingList/addShoppingListItem.tsx"
 import { ShoppingListItem } from "../../interfaces/ShoppingListItem.tsx"
-import { deleteShoppingItem } from "../../firebase/deleteShoppingListItem.tsx"
+import { deleteShoppingItem } from "../../firebase/shoppingList/deleteShoppingListItem.tsx"
 import { BiTrash } from "react-icons/bi"
 
 const ShoppingList: React.FC = () => {
