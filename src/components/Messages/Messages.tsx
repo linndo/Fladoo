@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Dropdown, Form, Row } from "react-bootstrap"
+import { Card, Col, Dropdown, Form, Modal, Row, Table } from "react-bootstrap"
 
 import "./messages.scss"
 
@@ -12,6 +12,7 @@ import { deleteMessage } from "../../firebase/deleteMessage.tsx"
 const Messages: React.FC = () => {
     const [newMessage, setNewMessage] = useState("")
     const [messages, setMessages] = useState<Message[]>([])
+    const [detailMessage, setDetailMessage] = useState<Message | null>()
 
     useEffect(() => {
         fetchMessages()
@@ -80,7 +81,9 @@ const Messages: React.FC = () => {
                                         <Dropdown.Item onClick={() => deleteCurrentMessage(message.messageText)}>
                                             Nachricht löschen
                                         </Dropdown.Item>
-                                        <Dropdown.Item href={"#action"}>Details anzeigen</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setDetailMessage(message)}>
+                                            Details anzeigen
+                                        </Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
@@ -88,6 +91,27 @@ const Messages: React.FC = () => {
                     </Card.Body>
                 </Card>
             ))}
+            <Modal show={!!detailMessage} onHide={() => setDetailMessage(null)} keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Nachrichtendetails</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Table>
+                        <Row>
+                            <Col xs={4}>Nachricht:</Col>
+                            <Col xs={8}>{detailMessage?.messageText}</Col>
+                        </Row>
+                        <Row>
+                            <Col xs={4}>Autor:</Col>
+                            <Col xs={8}>{detailMessage?.author}</Col>
+                        </Row>
+                        <Row>
+                            <Col xs={4}>Datum:</Col>
+                            <Col xs={8}>{detailMessage?.dateAdded.toLocaleString()}</Col>
+                        </Row>
+                    </Table>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

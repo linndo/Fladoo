@@ -10,7 +10,8 @@ const fetchAllMessages = async (): Promise<Message[]> => {
     docSnap.forEach((doc) => {
         newData.push({
             messageText: doc.data().Message,
-            dateAdded: doc.data().DateAdded,
+            author: doc.data().Author,
+            dateAdded: doc.data().DateAdded.toDate(),
         })
     })
 

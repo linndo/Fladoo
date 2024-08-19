@@ -1,5 +1,6 @@
 interface Message {
     messageText: string
+    author: string
     dateAdded: Date
 }
 
