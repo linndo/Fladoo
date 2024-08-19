@@ -75,7 +75,7 @@ const Messages: React.FC = () => {
                         </Row>
                         {!newMessageValidation && (
                             <Row>
-                                <Col className={"errorMessage"}>Bitte eine gültige Nachricht eingeben.</Col>
+                                <Col className={"validationMessage"}>Bitte eine gültige Nachricht eingeben.</Col>
                             </Row>
                         )}
                     </Card.Body>

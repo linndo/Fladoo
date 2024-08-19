@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Form, ListGroup, Row } from "react-bootstrap"
+import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap"
 
 import "./shoppingList.scss"
 
@@ -14,6 +14,7 @@ const ShoppingList: React.FC = () => {
     const [shoppingElements, setShoppingElements] = useState<ShoppingListItem[]>([])
     const [newItemName, setNewItemName] = useState("")
     const [newItemAmount, setNewItemAmount] = useState(1)
+    const [newItemValidated, setNewItemValidated] = useState(true)
 
     useEffect(() => {
         fetchShoppingListItems()
@@ -28,10 +29,12 @@ const ShoppingList: React.FC = () => {
         }
     }
     function addNewShoppingItem() {
-        addShoppingItem(newItemName, newItemAmount)
-        fetchShoppingListItems()
-        setNewItemName("")
-        setNewItemAmount(1)
+        if (newItemName.trim().length > 0) {
+            addShoppingItem(newItemName, newItemAmount)
+            fetchShoppingListItems()
+            setNewItemName("")
+            setNewItemAmount(1)
+        } else setNewItemValidated(false)
     }
 
     function removeShoppingItem(name: string) {
@@ -43,6 +46,11 @@ const ShoppingList: React.FC = () => {
         setNewItemAmount(newAmount)
     }
 
+    function handleItemInputChange(item: string) {
+        setNewItemName(item.trimStart())
+        setNewItemValidated(true)
+    }
+
     return (
         <div className={"shoppingList"}>
             <h1 className={"text-center"}>Shopping List</h1>
@@ -50,7 +58,7 @@ const ShoppingList: React.FC = () => {
                 <Card.Body>
                     <ListGroup>
                         {shoppingElements.map((element) => (
-                            <ListGroup.Item action as={"li"} className={""} key={element.id}>
+                            <ListGroup.Item action as={"li"} className={"shoppingItem"} key={element.id}>
                                 <Row className={"inputRow"}>
                                     <Col xs={1} className={"shoppingCol"}>
                                         {element.amount}
@@ -59,10 +67,12 @@ const ShoppingList: React.FC = () => {
                                         {element.name}
                                     </Col>
                                     <Col xs={1} className={"shoppingCol"}>
-                                        <BiTrash
-                                            className={"trashIcon"}
+                                        <Button
+                                            className={"trashButton"}
                                             onClick={() => removeShoppingItem(element.name)}
-                                        />
+                                        >
+                                            <BiTrash className={"trashIcon"} />
+                                        </Button>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
@@ -72,7 +82,7 @@ const ShoppingList: React.FC = () => {
                         <Row className={"inputRow"}>
                             <Col xs={8} className={"inputCol"}>
                                 <Form.Control
-                                    onChange={(e) => setNewItemName(e.target.value)}
+                                    onChange={(e) => handleItemInputChange(e.target.value)}
                                     value={newItemName}
                                     placeholder={"Neues Element hinzufügen"}
                                     className={"inputField"}
@@ -88,9 +98,14 @@ const ShoppingList: React.FC = () => {
                                 />
                             </Col>
                             <Col xs={2} className={"inputCol"}>
-                                <AiFillPlusCircle onClick={addNewShoppingItem} size={30} />
+                                <AiFillPlusCircle className={"plusIcon"} onClick={addNewShoppingItem} size={30} />
                             </Col>
                         </Row>
+                        {!newItemValidated && (
+                            <Row>
+                                <Col className={"validationMessage"}>Bitte einen gültigen Namen eingeben</Col>
+                            </Row>
+                        )}
                     </Card.Text>
                 </Card.Body>
             </Card>

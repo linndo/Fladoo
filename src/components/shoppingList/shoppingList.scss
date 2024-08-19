@@ -4,6 +4,13 @@
   color: $primary;
 }
 
+.shoppingItem {
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid $primary-soft !important;
+  color: $primary;
+}
+
 .shoppingCol {
   padding: 0;
   text-align: left;
@@ -14,26 +21,63 @@
   border-bottom: 2px solid $primary;
   border-radius: 0;
   box-shadow: none !important;
+  &:hover, &:focus {
+    border-color: $primary;
+  }
 }
 
 .input:focus {
   outline: none;
 }
 
+.trashButton {
+  padding: 0.3em;
+  background: transparent;
+  color: $primary;
+  border: 1px solid $primary;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: $primary;
+  }
+}
+
 .trashIcon {
   box-shadow: none !important;
   &.active{
     box-shadow: none !important;
-
   }
 }
 
 .inputRow {
   align-items: center;
+  padding-left: 1em;
+}
+
+.inputCol {
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .numberInput {
   width: 3rem;
-  padding: 0;
+  padding: 0.2em;
   margin: 0;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.plusIcon {
+  color: $primary;
+  &:hover {
+    color: $danger;
+  }
+}
+
+.validationMessage {
+  padding-left: 2em;
+  font-size: small;
+  color: $danger;
 }
