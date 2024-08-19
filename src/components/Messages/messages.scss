@@ -2,6 +2,17 @@
 
 .newMessageInput {
   border: none;
+  padding: 0;
+  resize: none;
+  overflow: hidden;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.errorMessage {
+  font-size: small;
+  color: $danger;
 }
 
 .message {
@@ -10,6 +21,22 @@
 
 .dropdown-toggle::after {
   display: none !important
+}
+
+.writeMessageButton {
+  background: $primary !important;
+  border: none;
+  &:hover {
+    background: transparent !important;
+  }
+}
+
+.writeMessageIcon {
+  color: white;
+}
+
+.writeMessageButton:hover .writeMessageIcon {
+  color: $primary;
 }
 
 .editMessageButton {

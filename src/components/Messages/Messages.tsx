@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Card, Col, Dropdown, Form, Modal, Row, Table } from "react-bootstrap"
+import { Button, Card, Col, Dropdown, Form, Modal, Row, Table } from "react-bootstrap"
 
 import "./messages.scss"
 
@@ -11,6 +11,7 @@ import { deleteMessage } from "../../firebase/messageBoard/deleteMessage.tsx"
 
 const Messages: React.FC = () => {
     const [newMessage, setNewMessage] = useState("")
+    const [newMessageValidation, setNewMessageValidation] = useState(true)
     const [messages, setMessages] = useState<Message[]>([])
     const [detailMessage, setDetailMessage] = useState<Message | null>()
 
@@ -28,13 +29,19 @@ const Messages: React.FC = () => {
         }
     }
     function handleNewMessageInput(message: string) {
-        setNewMessage(message)
+        setNewMessage(message.trimStart())
+        setNewMessageValidation(true)
     }
 
     function addNewMessage() {
-        addMessage(newMessage)
-        setNewMessage("")
-        fetchMessages()
+        if (newMessage.trim().length > 0) {
+            addMessage(newMessage.trim())
+            setNewMessage("")
+            fetchMessages()
+        } else {
+            setNewMessageValidation(false)
+            console.log("fehler")
+        }
     }
 
     function deleteCurrentMessage(message: string) {
@@ -50,20 +57,27 @@ const Messages: React.FC = () => {
                 <Card>
                     <Card.Body>
                         <Row>
-                            <Col xs={10}>
+                            <Col xs={10} className={"pl-3 align-content-center {}"}>
                                 <Form.Control
-                                    className={"newMessageInput"}
-                                    type={"text"}
+                                    className={`newMessageInput ${newMessageValidation ? "" : "invalidInput"}`}
+                                    as={"textarea"}
                                     placeholder={"Neue Nachricht verfassen..."}
                                     value={newMessage}
                                     onChange={(e) => handleNewMessageInput(e.target.value)}
                                     required
                                 />
                             </Col>
-                            <Col xs={2}>
-                                <BiPencil onClick={addNewMessage} />
+                            <Col xs={2} className={"align-content-center"}>
+                                <Button className={"writeMessageButton"} onClick={addNewMessage}>
+                                    <BiPencil className={"writeMessageIcon"} />
+                                </Button>
                             </Col>
                         </Row>
+                        {!newMessageValidation && (
+                            <Row>
+                                <Col className={"errorMessage"}>Bitte eine gültige Nachricht eingeben.</Col>
+                            </Row>
+                        )}
                     </Card.Body>
                 </Card>
             </div>
@@ -71,8 +85,10 @@ const Messages: React.FC = () => {
                 <Card className={"message"} key={message.dateAdded.toString()}>
                     <Card.Body>
                         <Row>
-                            <Col xs={10}>{message.messageText}</Col>
-                            <Col xs={2}>
+                            <Col xs={10} className={"pl-3 align-content-center"}>
+                                {message.messageText}
+                            </Col>
+                            <Col xs={2} className={"align-content-center"}>
                                 <Dropdown>
                                     <Dropdown.Toggle className={"editMessageButton"}>
                                         <BiDotsVertical className={"editMessageDots"} />
