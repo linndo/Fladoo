@@ -1,0 +1,57 @@
+@import "../../styles/colorTheme.scss";
+
+.addQuestionButton {
+ width: min-content;
+}
+
+.quizQuestion {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  height: min-content;
+}
+
+.quizAnswer {
+  margin: 0.1rem 0 0.1rem 0;
+  border-radius: 5px;
+  border: 1px solid $primary-soft !important;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    background: $primary;
+    color: white;
+  }
+}
+
+.wrongAnswer {
+  background: lightpink;
+  &:hover {
+    background: lightpink;
+    color: black;
+  }
+}
+
+.rightAnswer {
+  background: $success;
+  &:hover {
+    background: $success !important;
+    color: black;
+  }
+}
+
+.neutralAnswer {
+  &:hover {
+    background: transparent;
+    color: black;
+  }
+}
+
+.nextQuestionButton {
+  text-decoration: underline;
+}
+
+.quizOptions {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

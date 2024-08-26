@@ -4,7 +4,7 @@ import React from "react"
 const Gallery: React.FC = () => {
     return (
         <>
-            <div>Galerie</div>
+            <div>Hier kommt eine Galerie hin</div>
         </>
     )
 }

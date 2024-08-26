@@ -45,7 +45,6 @@ const Messages: React.FC = () => {
     }
 
     function deleteCurrentMessage(message: string) {
-        console.log("lösche diese message: ", message)
         deleteMessage(message)
         fetchMessages()
     }

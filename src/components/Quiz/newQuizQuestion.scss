@@ -1,0 +1,97 @@
+@import "../../styles/colorTheme.scss";
+
+.heading {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.subheading {
+  font-weight: 600;
+}
+
+.newQuestionInputRow {
+  width: 100%;
+}
+
+.newQuestionAnswerRow {
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.newQuestionInputLabel {
+
+}
+
+.newQuestionInput {
+  margin: 0.5rem;
+  border: 1px solid $primary-soft;
+  border-radius: 10px;
+}
+
+.answerInputInfo{
+  font-size: small;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.selectAnswerIcon {
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    color: $secondary;
+  }
+}
+
+.rightAnswerInput {
+  border: 1px solid $primary;
+  background: $info;
+}
+
+.deleteAnswerIcon {
+  display: flex;
+  align-items: center;
+}
+
+.addAnswerIcon {
+  display: flex;
+  justify-content: center;
+}
+
+.newQuestionInputError {
+  border-color: red;
+}
+
+.inputErrorText {
+  color: $danger;
+}
+
+.difficultyLevelGroup {
+  width: 90%;
+}
+
+.difficultyLevelButton {
+  background: transparent;
+  border-color: $primary;
+  color: $primary;
+  &:hover, &.active, &:focus, &:active {
+    background: $primary !important;
+    border-color: $primary !important;
+    color: white;
+  }
+}
+
+.submitButton {
+  background: transparent;
+  border-color: $primary;
+  color: $primary;
+  &:hover {
+    background: $primary;
+    border-color: $primary;
+  }
+}
+
+.divider {
+  width: 20%;
+  margin-right: 10%;
+  border: 1px solid $primary;
+  opacity: 1;
+}

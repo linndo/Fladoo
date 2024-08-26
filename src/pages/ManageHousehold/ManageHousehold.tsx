@@ -16,7 +16,7 @@ const ManageHousehold: React.FC = () => {
 
     return (
         <>
-            <div>Manage Household</div>
+            <div>Mitglieder verwalten</div>
             <ListGroup>
                 {flatmates.map((flatmate) => (
                     <ListGroup.Item key={flatmate.id}>{flatmate.name}</ListGroup.Item>
