@@ -7,7 +7,7 @@ const deleteMessage = async (message: string): Promise<void> => {
     const q = query(collectionRef, where("Message", "==", message))
     const querySnapshot = await getDocs(q)
 
-    querySnapshot.forEach(async (document) => {
+    querySnapshot.docs.map(async (document) => {
         const docRef = doc(database, "messages", document.id)
         await deleteDoc(docRef)
     })

@@ -1,9 +1,5 @@
 @import "../../styles/colorTheme.scss";
 
-.addQuestionButton {
- width: min-content;
-}
-
 .quizQuestion {
   display: flex;
   justify-content: center;
@@ -48,10 +44,4 @@
 
 .nextQuestionButton {
   text-decoration: underline;
-}
-
-.quizOptions {
-  display: flex;
-  justify-content: center;
-  align-content: center;
 }

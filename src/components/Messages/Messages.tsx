@@ -3,10 +3,10 @@ import { Button, Card, Col, Dropdown, Form, Modal, Row, Table } from "react-boot
 
 import "./messages.scss"
 
+import { Message } from "../../interfaces/Message.tsx"
 import { BiDotsVertical, BiPencil } from "react-icons/bi"
 import { addMessage } from "../../firebase/messageBoard/addNewMessage.tsx"
 import { fetchAllMessages } from "../../firebase/messageBoard/getMessages.tsx"
-import { Message } from "../../interfaces/Message.tsx"
 import { deleteMessage } from "../../firebase/messageBoard/deleteMessage.tsx"
 
 const Messages: React.FC = () => {
@@ -16,7 +16,11 @@ const Messages: React.FC = () => {
     const [detailMessage, setDetailMessage] = useState<Message | null>()
 
     useEffect(() => {
-        fetchMessages()
+        try {
+            fetchMessages()
+        } catch (error) {
+            console.error("error")
+        }
     }, [])
 
     const fetchMessages = async () => {

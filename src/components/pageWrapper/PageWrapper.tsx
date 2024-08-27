@@ -10,7 +10,7 @@ import NavBar from "../navBar/NavBar.tsx"
 import Home from "../../pages/Home/Home.tsx"
 import Gallery from "../../pages/Gallery/Gallery.tsx"
 import ManageHousehold from "../../pages/ManageHousehold/ManageHousehold.tsx"
-import Profile from "../../pages/Profile/Profile.tsx";
+import Profile from "../../pages/Profile/Profile.tsx"
 
 import Container from "react-bootstrap/Container"
 
